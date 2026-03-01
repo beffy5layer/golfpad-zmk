@@ -2,15 +2,31 @@
 
 / {
     chosen {
+        zmk,kscan = &kscan0;
         zmk,matrix-transform = &golfpad_transform;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+
+        /* TODO: replace these with your actual pins */
+        row-gpios = <&gpio0 0 GPIO_ACTIVE_LOW>,
+                    <&gpio0 0 GPIO_ACTIVE_LOW>,
+                    <&gpio0 0 GPIO_ACTIVE_LOW>,
+                    <&gpio0 0 GPIO_ACTIVE_LOW>;
+
+        col-gpios = <&gpio0 0 GPIO_ACTIVE_LOW>,
+                    <&gpio0 0 GPIO_ACTIVE_LOW>,
+                    <&gpio0 0 GPIO_ACTIVE_LOW>,
+                    <&gpio0 0 GPIO_ACTIVE_LOW>,
+                    <&gpio0 0 GPIO_ACTIVE_LOW>;
     };
 
     golfpad_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <5>;
         rows = <4>;
-
-        /* 20 keys, row-major: R0C0..R0C4, R1C0.., R2.., R3.. */
         map = <
             0 1 2 3 4
             5 6 7 8 9
