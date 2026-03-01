@@ -1,0 +1,6 @@
+if SHIELD_GOLFPAD
+
+config ZMK_KEYBOARD_NAME
+    default "Golfpad"
+
+endif
