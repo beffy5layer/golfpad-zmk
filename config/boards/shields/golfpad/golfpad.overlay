@@ -10,16 +10,17 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
 
-        /* TODO: replace these with your actual pins */
-        row-gpios = <&gpio0 24 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                    <&gpio0 22 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                    <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                    <&gpio0 17 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        /* Rows: no pull-ups */
+        row-gpios = <&gpio0 24 GPIO_ACTIVE_LOW>,
+                    <&gpio0 22 GPIO_ACTIVE_LOW>,
+                    <&gpio0 20 GPIO_ACTIVE_LOW>,
+                    <&gpio0 17 GPIO_ACTIVE_LOW>;
 
-        col-gpios = <&gpio0 6  (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                    <&gpio0 8  (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+        /* Columns: keep pull-ups */
+        col-gpios = <&gpio0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                    <&gpio0 8 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
                     <&gpio0 11 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
-                    <&gpio0 9  (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
+                    <&gpio0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>,
                     <&gpio0 10 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
     };
 
@@ -28,8 +29,8 @@
         columns = <5>;
         rows = <4>;
         map = <
-            0 1 2 3 4
-            5 6 7 8 9
+            0  1  2  3  4
+            5  6  7  8  9
             10 11 12 13 14
             15 16 17 18 19
         >;
